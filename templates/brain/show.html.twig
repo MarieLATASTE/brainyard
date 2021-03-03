@@ -1,0 +1,46 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+<article>
+    <h2>{{ article.title }}</h2>
+            <div class="metadata">written on the {{ article.createdAt | date('d/m/Y') }} at {{ article.createdAt | date('H:i') }} in the category {{ article.category.title }}</div>
+    <div class="content">
+        <img src="{{ article.image }}" alt="image">
+        {{ article.content | raw }}
+    </div>
+</article>
+
+<section id="comments">
+    <h1>{{ article.comments | length }} Comments :</h1>
+    {% for comment in article.comments %}
+    <div class="comment">
+        <div class="row">
+            <div class="col-3">
+                {{ comment.author }} (<small>{{ comment.createdAt | date('d/m/Y à H:i') }}</small>)
+            </div>
+            <div class="col">
+                {{ comment.content | raw }}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+
+    {% if app.user %}
+
+    {{ form_start(commentForm) }}
+
+    {{ form_row(commentForm.author, {'attr': {'placeholder': "Your name"}}) }}
+    {{ form_row(commentForm.content, {'attr': {'placeholder': "Your comment"}}) }}
+
+    <button type="submit" class="btn btn-success">Push</button>
+    {{ form_end(commentForm) }}
+
+    {% else %}
+        
+        <h2>You cannot play if you are not connected !</h2>
+        <a href="{{ path('security_login')}}" class="btn btn-warning btn-lg">Join us</a>
+    {% endif %}
+</section>
+{% endblock %}
+
