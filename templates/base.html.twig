@@ -16,9 +16,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <a class="navbar-brand" href="{{ path('home') }}">BrainYard</a>
 
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+
 
   <div class="collapse navbar-collapse" id="navbarColor01">
     <ul class="navbar-nav mr-auto">
@@ -42,6 +40,45 @@
     </ul>
   </div>
 </nav>
+
+<div class="fixed-bottom">
+<table class="table table-hover">
+
+  <tbody>
+    <tr class="table-dark">
+      <th scope="row"></th>
+      <td>: octocat:</td>
+      <td>BrainYard &copy; 2021</td>
+      <td><button onclick="topFunction()" type="button" id="myBtn" title="Go to top" class="btn btn-outline-light">Top</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<script>
+//Get the button
+var mybutton = document.getElementById("myBtn");
+
+// When the user scrolls down 20px from the top of the document, show the button
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
+}
+</script>
+
+        
 
 
 
